@@ -39,6 +39,10 @@ function App() {
     setPokeCount(caughtPokemons.length);
   }
 
+  function addPokemon() {
+    console.log('add pokemon')
+  }
+
   //useEffect som tar funktionen som skall köras som första parameter och vad som triggar den som andra
   useEffect(updatePokeCount, [pokemons]);
 
@@ -50,7 +54,7 @@ function App() {
           <PokemonCard pokemonCaught={pokemonCaught} pokemon={pokemon} key={pokemon.id} />
         ))
       }
-      <PokemonForm />
+      <PokemonForm addPokemon={addPokemon} />
     </div>
   );
 }

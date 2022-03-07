@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 
-export default function PokemonForm() {
+export default function PokemonForm(props) {
     const [newPokemon, setNewPokemon] = useState({
         id: null,
         name: '',
@@ -8,8 +8,19 @@ export default function PokemonForm() {
     });
 
     function addPokemon(e, target) {
-        console.log(e.target.value);
-        console.log(target);
+        let toBeAdded = {...newPokemon};
+        if (target === 'id') {
+            toBeAdded.id = parseInt(e.target.value);
+            setNewPokemon(toBeAdded);
+        }
+        if (target === 'name') {
+            toBeAdded.name = e.target.value;
+            setNewPokemon(toBeAdded);
+        }
+        if (target === 'caught') {
+            toBeAdded.caught = e.target.checked;
+            setNewPokemon(toBeAdded);
+        }
     }
 
   return (
@@ -21,7 +32,7 @@ export default function PokemonForm() {
         <input onChange={(e) => addPokemon(e, 'name')} id='name' type="text"></input>
         <label htmlFor='caught'>Caught:</label>
         <input onChange={(e) => addPokemon(e, 'caught')} id="caught" type="checkbox"></input>
-        <input type="button" value="Add"></input> 
+        <input type="button" value="Add" onClick={() => {props.addPokemon(newPokemon)}}></input> 
     </article>
   )
 }
