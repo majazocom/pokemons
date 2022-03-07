@@ -1,6 +1,7 @@
 import './App.css';
 import { useEffect, useState } from 'react';
 import PokemonCard from './Components/PokemonCard';
+import PokemonForm from './Components/PokemonForm';
 
 function App() {
   const [pokemons, setPokemons] = useState([
@@ -49,6 +50,7 @@ function App() {
           <PokemonCard pokemonCaught={pokemonCaught} pokemon={pokemon} key={pokemon.id} />
         ))
       }
+      <PokemonForm />
     </div>
   );
 }
